@@ -15,7 +15,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/zderApfel/Sayu/tree/heroku"
+    "url": "git+https://github.com/zderApfel/sayu-heroku"
   },
   "keywords": [
     "heroku",
@@ -24,7 +24,7 @@
   "author": "synicalsyntax",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/zderApfel/Sayu/issues"
+    "url": "https://github.com/zderApfel/sayu-heroku/issues"
   },
   "dependencies": {
     "discord.js": "^11.3.0"
