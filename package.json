@@ -1,0 +1,32 @@
+
+ 
+{
+  "name": "zz-sayu",
+  "version": "1.0.0",
+  "description": "A bot that speaks for you through direct messgaes",
+  "main": "index.js",
+  "engines": {
+    "node": "8.x",
+    "npm": "*"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zderApfel/Sayu/tree/heroku"
+  },
+  "keywords": [
+    "heroku",
+    "discord.js"
+  ],
+  "author": "synicalsyntax",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/zderApfel/Sayu/issues"
+  },
+  "dependencies": {
+    "discord.js": "^11.3.0"
+  }
+}
