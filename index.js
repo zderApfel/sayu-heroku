@@ -1,4 +1,4 @@
-onst Discord = require("discord.js"); //Initialization
+const Discord = require("discord.js"); //Initialization
 const client = new Discord.Client();
 
 const config = require("./config/config.json"); //Configuration file for hidden parameters
