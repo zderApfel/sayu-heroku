@@ -49,7 +49,7 @@ function makeHelpMessage(){
   let setHelpMessage = `
 **-Base Commands-** These serve basic functions
 * !help - Shows this help message
-**-Channel Commands-** Use these before a message to specify the channel you want me to post in\n
+**-Channel Commands-** Use these before a message to specify the channel you want me to post in
 `;
   for (x in chanList){
     setHelpMessage = setHelpMessage+`* !${chanList[x].name.toLowerCase()}\n`;
