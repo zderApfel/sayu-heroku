@@ -1,8 +1,6 @@
 const Discord = require("discord.js"); //Initialization
 const client = new Discord.Client();
 
-const config = require("./config/config.json"); //Configuration file for hidden parameters
-
 //Parameters
 const botToken = process.env.TOKEN; //Bot token
 const userID = process.env.USERID; //Person bot will be listening to messages from 
