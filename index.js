@@ -1,12 +1,12 @@
 const Discord = require("discord.js"); //Initialization
 const client = new Discord.Client();
 
+const config = require("./config/config.json");
+
 //Parameters
 const botToken = process.env.TOKEN; //Bot token
 const userID = process.env.USERID; //Person bot will be listening to messages from 
-const chanList = process.env.CHANNELS; //Array
-
-console.log(typeof chanList);
+const chanList = config.CHANNELS; //Array
 
 client.on("ready", () => {
   console.log("Bot has logged in");
