@@ -1,15 +1,17 @@
-
-const Discord = require("discord.js"); //Initialization
+onst Discord = require("discord.js"); //Initialization
 const client = new Discord.Client();
 
-//Parameters
-const userID = process.env.userID; //Person bot will be listening to messages from
+const config = require("./config/config.json"); //Configuration file for hidden parameters
 
+//Parameters
+const botToken = process.env.TOKEN; //Bot token
+const userID = process.env.USERID; //Person bot will be listening to messages from 
+const chanList = process.env.CHANNELS; //Array
 
 client.on("ready", () => {
   console.log("Bot has logged in");
-  if(client.users.get(userID) != undefined){ //Prevent crash due to invalid UserID
-    client.users.get(userID).send("I AWAKEN. Say what you want me to say. NOTE: I currently cannot send emojis, but hopefully I can in the future :)");
+  if(client.users.cache.get(userID) != undefined){ //Prevent crashes from invalid userID
+    client.users.cache.get(userID).send("I AWAKEN. I can now send messages to multiple channels! Type !help for info!");
   }
   else{
     console.log("ERROR: User not found! Verify ID and try again");
@@ -17,11 +19,42 @@ client.on("ready", () => {
 });
 
 client.on("message", (message) => {
-  let sendTo = client.channels.get(process.env.channelID);
   if(message.author.id == userID && message.channel instanceof Discord.DMChannel){
-    sendTo.send(message.content);
+    let command = "";
+    if(message.content.startsWith("!") == true){
+      command = getCommand(message.content);
+      setCommand(command, message.content);
+    }
   }
 })
 
-client.login(process.env.BOT_TOKEN); //Edit token in config.json
+function getCommand(text){
+  let newText = text.split(" ");
+  return newText[0];
+}
 
+function setCommand(comm, fullMessage){
+  if (comm == "!help"){
+    return client.users.cache.get(userID).send(makeHelpMessage());
+  }
+  for (x in chanList){
+    if (comm == `!${chanList[x].name.toLowerCase()}`){
+      return client.channels.cache.get(chanList[x].id).send(fullMessage.slice(comm.length + 1));
+    }
+  }
+  client.users.cache.get(userID).send("Sorry, I don't understand you, type !help for the list of commands I can understand");
+}
+
+function makeHelpMessage(){
+  let setHelpMessage = `
+**-Base Commands-** These serve basic functions
+* !help - Shows this help message
+**-Channel Commands-** Use these before a message to specify the channel you want me to post in\n
+`;
+  for (x in chanList){
+    setHelpMessage = setHelpMessage+`* !${chanList[x].name.toLowerCase()}\n`;
+  }
+  return setHelpMessage;
+}
+
+client.login(botToken);
