@@ -1,7 +1,7 @@
 const Discord = require("discord.js"); //Initialization
 const client = new Discord.Client();
 
-const config = require("./config/config.json");
+const config = require("./channels.json");
 
 //Parameters
 const botToken = process.env.TOKEN; //Bot token
