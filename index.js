@@ -6,6 +6,8 @@ const botToken = process.env.TOKEN; //Bot token
 const userID = process.env.USERID; //Person bot will be listening to messages from 
 const chanList = process.env.CHANNELS; //Array
 
+console.log(typeof chanList);
+
 client.on("ready", () => {
   console.log("Bot has logged in");
   if(client.users.get(userID) != undefined){ //Prevent crashes from invalid userID
