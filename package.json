@@ -6,7 +6,7 @@
   "description": "A bot that speaks for you through direct messgaes",
   "main": "index.js",
   "engines": {
-    "node": "16.x",
+    "node": "14.x",
     "npm": "*"
   },
   "scripts": {
@@ -27,6 +27,6 @@
     "url": "https://github.com/zderApfel/sayu-heroku/issues"
   },
   "dependencies": {
-    "discord.js": "^13.6.0"
+    "discord.js": "^11.3.0"
   }
 }
