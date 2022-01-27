@@ -10,6 +10,7 @@ const chanList = config.CHANNELS; //Array
 
 client.on("ready", () => {
   console.log("Bot has logged in");
+  console.log(process.env.USERID); //DELETE THIS LATER
   if(client.users.get(userID) != undefined){ //Prevent crashes from invalid userID
     client.users.get(userID).send("I AWAKEN. I can now send messages to multiple channels! Type !help for info!");
   }
