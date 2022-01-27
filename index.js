@@ -1,4 +1,4 @@
-const Discord = require("discord.js"); //Initialization
+const Discord = require("discord.js.old"); //Initialization
 const client = new Discord.Client();
 
 const config = require("./channels.json");
