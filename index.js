@@ -10,8 +10,8 @@ const chanList = config.CHANNELS; //Array
 
 client.on("ready", () => {
   console.log("Bot has logged in");
-  if(client.users.fetch(userID) != undefined){ //Prevent crashes from invalid userID
-    client.users.fetch(userID).send("I AWAKEN. I can now send messages to multiple channels! Type !help for info!");
+  if(client.user.fetch(userID) != undefined){ //Prevent crashes from invalid userID
+    client.user.fetch(userID).send("I AWAKEN. I can now send messages to multiple channels! Type !help for info!");
   }
   else{
     console.log("ERROR: User not found! Verify ID and try again");
@@ -35,14 +35,14 @@ function getCommand(text){
 
 function setCommand(comm, fullMessage){
   if (comm == "!help"){
-    return client.users.fetch(userID).send(makeHelpMessage());
+    return client.user.fetch(userID).send(makeHelpMessage());
   }
   for (x in chanList){
     if (comm == `!${chanList[x].name.toLowerCase()}`){
       return client.channels.fetch(chanList[x].id).send(fullMessage.slice(comm.length + 1));
     }
   }
-  client.users.fetch(userID).send("Sorry, I don't understand you, type !help for the list of commands I can understand");
+  client.user.fetch(userID).send("Sorry, I don't understand you, type !help for the list of commands I can understand");
 }
 
 function makeHelpMessage(){
