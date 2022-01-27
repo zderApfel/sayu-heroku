@@ -1,5 +1,5 @@
-const { Client, Intents } = require('discord.js'); //Initialization
-const client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES] });
+const Discord = require("discord.js"); //Initialization
+const client = new Discord.Client();
 
 const config = require("./channels.json");
 
@@ -10,8 +10,8 @@ const chanList = config.CHANNELS; //Array
 
 client.on("ready", () => {
   console.log("Bot has logged in");
-  if(client.users.fetch(userID) != undefined){ //Prevent crashes from invalid userID
-    client.users.fetch(userID).send("I AWAKEN. I can now send messages to multiple channels! Type !help for info!");
+  if(client.users.get(userID) != undefined){ //Prevent crashes from invalid userID
+    client.users.get(userID).send("I AWAKEN. I can now send messages to multiple channels! Type !help for info!");
   }
   else{
     console.log("ERROR: User not found! Verify ID and try again");
@@ -35,14 +35,14 @@ function getCommand(text){
 
 function setCommand(comm, fullMessage){
   if (comm == "!help"){
-    return client.users.fetch(userID).send(makeHelpMessage());
+    return client.users.get(userID).send(makeHelpMessage());
   }
   for (x in chanList){
     if (comm == `!${chanList[x].name.toLowerCase()}`){
-      return client.channels.fetch(chanList[x].id).send(fullMessage.slice(comm.length + 1));
+      return client.channels.get(chanList[x].id).send(fullMessage.slice(comm.length + 1));
     }
   }
-  client.users.fetch(userID).send("Sorry, I don't understand you, type !help for the list of commands I can understand");
+  client.users.get(userID).send("Sorry, I don't understand you, type !help for the list of commands I can understand");
 }
 
 function makeHelpMessage(){
